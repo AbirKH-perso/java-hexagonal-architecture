@@ -7,6 +7,7 @@
         <module>application</module>
 		<module>adapteur-api</module>
 		<module>adapteur-persistence</module>
+		<module>main-component</module>
 	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
