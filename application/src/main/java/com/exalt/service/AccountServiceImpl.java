@@ -12,6 +12,10 @@ public class AccountServiceImpl implements AccountDepositPort {
 
     @Override
     public AccountDto deposite(double amount, long accountNumber) {
-        return null;
+        AccountDto accountDto = accountPersistencePort.getAccountByNumber(accountNumber);
+        AccountDto savedAccount;
+        accountDto.setBalance(accountDto.getBalance() + amount);
+        savedAccount = accountPersistencePort.saveAccount(accountDto);
+        return savedAccount;
     }
 }

@@ -4,4 +4,6 @@ import com.exalt.data.AccountDto;
 
 public interface AccountPersistencePort {
     AccountDto getAccountByNumber(long accountNumber);
+
+    AccountDto saveAccount(AccountDto accountDto);
 }
