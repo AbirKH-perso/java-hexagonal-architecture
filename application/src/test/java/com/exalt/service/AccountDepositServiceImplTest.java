@@ -4,6 +4,7 @@ package com.exalt.service;
 import com.exalt.data.AccountDto;
 import com.exalt.ports.api.AccountDepositPort;
 import com.exalt.ports.spi.AccountPersistencePort;
+import com.exalt.ports.spi.TransactionPersistancePort;
 import com.exalt.service.exceptions.AccountNotFoundException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,9 @@ class AccountDepositServiceImplTest {
     AccountDepositPort accountServicePort;
     @MockBean
     AccountPersistencePort accountPersistencePort;
+
+    @MockBean
+    TransactionPersistancePort transactionPersistancePort;
 
     @Test
     void deposite_successTest() {
