@@ -51,4 +51,10 @@ class AccountControllerTest {
                         .content(objectMapper.writeValueAsString(accountDto)))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    void withdrawalTest() throws Exception {
+        mockMvc.perform(post("/account/withdrawal").param("amount","100").param("accountNumber","1"))
+                .andExpect(status().isOk());
+    }
 }

@@ -22,6 +22,10 @@ public class AccountController {
     public ResponseEntity<AccountDto> deposite(@RequestParam double amount, @RequestParam long accountNumber){
         return  new ResponseEntity<>( accountDepositPort.deposite(amount, accountNumber), HttpStatus.OK);
     }
+    @PostMapping("/withdrawal")
+    public ResponseEntity<AccountDto> withdrawal(@RequestParam double amount, @RequestParam long accountNumber){
+        return  new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
 
     @PostMapping
     public ResponseEntity<AccountDto> createAccount(@RequestBody AccountDto account){
