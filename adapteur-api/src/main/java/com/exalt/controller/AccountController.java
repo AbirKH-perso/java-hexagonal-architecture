@@ -19,4 +19,9 @@ public class AccountController {
         return  new ResponseEntity<>( accountDepositPort.deposite(amount, accountNumber), HttpStatus.OK);
     }
 
+    @PostMapping
+    public ResponseEntity<AccountDto> createAccount(@RequestBody AccountDto account){
+        return  new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
+
 }
