@@ -6,12 +6,18 @@ import com.exalt.ports.api.AccountWithdrawalPort;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AccountWithdrawalPortImpl extends AccountBalance implements AccountWithdrawalPort {
+public class AccountWithdrawalServiceImpl extends AccountBalance implements AccountWithdrawalPort {
 
     @Override
     public AccountDto withdrawal(double amount, long accountNumber) {
         return super.setBalance(amount,accountNumber);
     }
+
+    @Override
+    public String getTransactionMessage() {
+        return "withdrawal to account";
+    }
+
     @Override
     public Double getBalance(double amount, AccountDto accountDto) {
         return accountDto.getBalance() - amount;

@@ -17,8 +17,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {AccountWithdrawalPortImpl.class})
-class AccountWithdrawalPortImplTest {
+@ContextConfiguration(classes = {AccountWithdrawalServiceImpl.class})
+class AccountWithdrawalServiceImplTest {
     @Autowired
     AccountWithdrawalPort accountWithdrawalPort;
     @MockBean

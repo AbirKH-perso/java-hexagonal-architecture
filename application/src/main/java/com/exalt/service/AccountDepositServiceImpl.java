@@ -13,6 +13,11 @@ public class AccountDepositServiceImpl extends AccountBalance implements Account
     }
 
     @Override
+    public String getTransactionMessage() {
+        return "deposite to account";
+    }
+
+    @Override
     public Double getBalance(double amount, AccountDto accountDto) {
         return accountDto.getBalance() + amount;
     }
