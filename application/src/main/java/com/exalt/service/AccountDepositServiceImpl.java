@@ -5,8 +5,10 @@ import com.exalt.ports.api.AccountDepositPort;
 import com.exalt.ports.spi.AccountPersistencePort;
 import com.exalt.service.exceptions.AccountNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class AccountServiceImpl implements AccountDepositPort {
+@Service
+public class AccountDepositServiceImpl implements AccountDepositPort {
 
     @Autowired
     private AccountPersistencePort accountPersistencePort;

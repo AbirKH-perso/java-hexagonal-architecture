@@ -17,8 +17,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = {AccountServiceImpl.class})
-class AccountServiceImplTest {
+@ContextConfiguration(classes = {AccountDepositServiceImpl.class})
+class AccountDepositServiceImplTest {
 
     @Autowired
     AccountDepositPort accountServicePort;
