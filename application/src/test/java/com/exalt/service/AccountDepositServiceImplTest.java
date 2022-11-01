@@ -2,6 +2,7 @@ package com.exalt.service;
 
 
 import com.exalt.data.AccountDto;
+import com.exalt.data.TransactionDto;
 import com.exalt.ports.api.AccountDepositPort;
 import com.exalt.ports.spi.AccountPersistencePort;
 import com.exalt.ports.spi.TransactionPersistancePort;
@@ -36,6 +37,7 @@ class AccountDepositServiceImplTest {
         Mockito.when(accountPersistencePort.saveAccount(any(AccountDto.class))).thenAnswer(i -> i.getArguments()[0]);
         AccountDto expectedAccount = accountServicePort.deposite(100L, 123);
         Assertions.assertThat(expectedAccount.getBalance()).isEqualTo(100);
+        Mockito.verify(transactionPersistancePort).saveTransaction(any(TransactionDto.class));
     }
 
     @Test
