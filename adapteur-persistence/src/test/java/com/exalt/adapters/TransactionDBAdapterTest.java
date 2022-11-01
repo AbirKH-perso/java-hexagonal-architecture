@@ -13,9 +13,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(SpringExtension.class)
@@ -27,14 +27,15 @@ class TransactionDBAdapterTest {
     private TransactionRepository transactionRepository;
 
     @Test
-    void saveTransaction() {
+    void saveTransactionTest() {
         Mockito.when(transactionRepository.save(any(Transaction.class))).thenReturn(new Transaction());
         transactionPersistancePort.saveTransaction(new TransactionDto());
         Mockito.verify(transactionRepository).save(any(Transaction.class));
     }
 
     @Test
-    void getAllTransactions() {
+    void getAllTransactionsTest() {
+        Mockito.when(transactionRepository.findByAccountAccountNumber(123)).thenReturn(new ArrayList<>());
         List<TransactionDto> allTransactions = transactionPersistancePort.getAllTransactions(123);
         Assertions.assertThat(allTransactions).isNotNull();
 

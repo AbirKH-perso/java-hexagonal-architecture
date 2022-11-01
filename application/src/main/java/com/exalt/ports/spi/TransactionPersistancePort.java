@@ -8,5 +8,5 @@ import java.util.List;
 public interface TransactionPersistancePort {
 
     void saveTransaction(TransactionDto transactionDto);
-    List<TransactionDto> getAllTransactions(long accountId);
+    List<TransactionDto> getAllTransactions(long accountNumber);
 }

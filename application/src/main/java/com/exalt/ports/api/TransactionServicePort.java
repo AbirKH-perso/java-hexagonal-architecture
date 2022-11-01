@@ -7,5 +7,5 @@ import java.util.List;
 
 @Service
 public interface TransactionServicePort {
-    List<TransactionDto> getAllTransactions(long accountId);
+    List<TransactionDto> getAllTransactions(long accountNumber);
 }
