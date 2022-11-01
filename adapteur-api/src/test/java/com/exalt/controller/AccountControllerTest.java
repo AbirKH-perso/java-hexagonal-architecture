@@ -2,6 +2,7 @@ package com.exalt.controller;
 
 import com.exalt.data.AccountDto;
 import com.exalt.ports.api.AccountDepositPort;
+import com.exalt.ports.api.AccountServicePort;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -28,6 +30,9 @@ class AccountControllerTest {
     @MockBean
     private AccountDepositPort accountDepositPort;
 
+    @MockBean
+    private AccountServicePort accountServicePort;
+
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -41,6 +46,7 @@ class AccountControllerTest {
     @Test
     void createAccount() throws Exception {
         AccountDto accountDto = new AccountDto(1,5,0.0,"courant");
+        Mockito.when(accountServicePort.createAccount(any(AccountDto.class))).thenReturn(accountDto);
         mockMvc.perform(post("/account").contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(accountDto)))
                 .andExpect(status().isOk());
