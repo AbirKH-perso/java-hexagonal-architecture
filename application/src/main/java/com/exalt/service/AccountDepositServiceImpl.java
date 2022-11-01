@@ -2,27 +2,18 @@ package com.exalt.service;
 
 import com.exalt.data.AccountDto;
 import com.exalt.ports.api.AccountDepositPort;
-import com.exalt.ports.spi.AccountPersistencePort;
-import com.exalt.service.exceptions.AccountNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AccountDepositServiceImpl implements AccountDepositPort {
-
-    @Autowired
-    private AccountPersistencePort accountPersistencePort;
+public class AccountDepositServiceImpl extends AccountBalance implements AccountDepositPort {
 
     @Override
     public AccountDto deposite(double amount, long accountNumber) {
-        AccountDto accountDto = accountPersistencePort.getAccountByNumber(accountNumber);
-        AccountDto savedAccount;
-        if(accountDto==null) {
-            throw new AccountNotFoundException("Account with number: "+accountNumber+" not found!");
-        }else {
-            accountDto.setBalance(accountDto.getBalance() + amount);
-            savedAccount = accountPersistencePort.saveAccount(accountDto);
-        }
-        return savedAccount;
+        return super.setBalance(amount,accountNumber);
+    }
+
+    @Override
+    public Double getBalance(double amount, AccountDto accountDto) {
+        return accountDto.getBalance() + amount;
     }
 }
