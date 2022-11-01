@@ -4,6 +4,7 @@ package com.exalt.service;
 import com.exalt.data.AccountDto;
 import com.exalt.ports.api.AccountDepositPort;
 import com.exalt.ports.spi.AccountPersistencePort;
+import com.exalt.service.exceptions.AccountNotFoundException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -37,7 +38,7 @@ class AccountServiceImplTest {
     void deposite_exceptionTest() {
         Mockito.when(accountPersistencePort.getAccountByNumber(123)).thenReturn(null);
         Assertions.assertThatThrownBy(() -> accountServicePort.deposite(100L, 123))
-                .isInstanceOf(RuntimeException.class).hasMessageContaining("not found");
+                .isInstanceOf(AccountNotFoundException.class).hasMessageContaining("not found");
     }
 
 }
