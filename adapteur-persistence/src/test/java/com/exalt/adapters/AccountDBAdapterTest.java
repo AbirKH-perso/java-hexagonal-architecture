@@ -25,6 +25,7 @@ class AccountDBAdapterTest {
 
     @Test
     void getAccountByNumberTest() {
+        Mockito.when(accountRepository.findByaccountNumber(1L)).thenReturn(new Account());
         AccountDto accountDto = accountPersistencePort.getAccountByNumber(1L);
         Assertions.assertThat(accountDto).isNotNull();
     }
