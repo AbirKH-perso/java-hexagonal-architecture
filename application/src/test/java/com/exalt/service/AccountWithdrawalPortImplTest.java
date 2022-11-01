@@ -28,6 +28,6 @@ class AccountWithdrawalPortImplTest {
         Mockito.when(accountPersistencePort.getAccountByNumber(123)).thenReturn(accountDto);
         Mockito.when(accountPersistencePort.saveAccount(any(AccountDto.class))).thenAnswer(i -> i.getArguments()[0]);
         AccountDto expectedAccount = accountWithdrawalPort.withdrawal(100L, 123);
-        Assertions.assertThat(expectedAccount).isNotNull();
+        Assertions.assertThat(expectedAccount.getBalance()).isEqualTo(-100);
     }
 }
