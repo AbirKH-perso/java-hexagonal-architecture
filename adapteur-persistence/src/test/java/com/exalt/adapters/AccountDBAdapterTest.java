@@ -24,10 +24,10 @@ class AccountDBAdapterTest {
     private AccountRepository accountRepository;
 
     @Test
-    void getAccountByNumberTest() {
-        Mockito.when(accountRepository.findByaccountNumber(1L)).thenReturn(new Account());
-        AccountDto accountDto = accountPersistencePort.getAccountByNumber(1L);
-        Assertions.assertThat(accountDto).isNotNull();
+    void updateAccountBalanceTest() {
+        Mockito.when(accountRepository.findByAccountNumber(1L)).thenReturn(new Account(1L,2.0D,"courant",null));
+        AccountDto accountDto = accountPersistencePort.updateAccountBalance(a->a+3,1L);
+        Assertions.assertThat(accountDto.getBalance()).isEqualTo(5.0);
     }
 
     @Test

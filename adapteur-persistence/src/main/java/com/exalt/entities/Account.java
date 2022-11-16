@@ -1,42 +1,24 @@
 package com.exalt.entities;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity(name = "Account")
 @Table
 public class Account {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(name = "accountNumber")
     private long accountNumber;
     @Column(name = "balance")
     private Double balance;
 
-    @Column(name = "accounttype")
-    private String accounttype;
+    @Column(name = "accountType")
+    private String accountType;
 
-
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Transaction> transactions = new ArrayList<>();
-
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
 
     public long getId() {
         return id;
@@ -62,12 +44,12 @@ public class Account {
         this.balance = balance;
     }
 
-    public String getAccounttype() {
-        return accounttype;
+    public String getAccountType() {
+        return accountType;
     }
 
-    public void setAccounttype(String accounttype) {
-        this.accounttype = accounttype;
+    public void setAccountType(String accounttype) {
+        this.accountType = accounttype;
     }
 
     public Account() {
@@ -76,19 +58,17 @@ public class Account {
     }
 
 
-    public Account(long id, long accountNumber, Double balance, String accounttype,
+    public Account(long accountNumber, Double balance, String accountType,
                    List<Transaction> transactions) {
         super();
-        this.id = id;
         this.accountNumber = accountNumber;
         this.balance = balance;
-        this.accounttype = accounttype;
-        this.transactions = Collections.emptyList();
+        this.accountType = accountType;
     }
 
     @Override
     public String toString() {
         return "Account [id=" + id + ", accountNumber=" + accountNumber + ", balance=" + balance
-                + ", accounttype=" + accounttype + ", transactions=" + transactions + "]";
+                + ", accounttype=" + accountType + "]";
     }
 }

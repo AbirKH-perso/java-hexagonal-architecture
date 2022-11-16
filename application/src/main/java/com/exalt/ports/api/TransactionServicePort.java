@@ -8,4 +8,6 @@ import java.util.List;
 @Service
 public interface TransactionServicePort {
     List<TransactionDto> getAllTransactions(long accountNumber);
+    void saveTransaction(TransactionDto transaction);
+
 }

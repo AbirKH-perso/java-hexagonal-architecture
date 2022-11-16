@@ -11,8 +11,8 @@ import java.util.List;
 @Mapper
 public interface TransactionMapper {
     TransactionMapper INSTANCE = Mappers.getMapper(TransactionMapper.class);
-
     Transaction toTransactionEntity(TransactionDto transactionDto);
+    TransactionDto toTransactionDto(Transaction transaction);
 
     List<TransactionDto> toTransactionDtoList(List<Transaction> transaction);
 }

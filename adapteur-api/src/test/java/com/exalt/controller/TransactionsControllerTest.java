@@ -28,7 +28,7 @@ class TransactionsControllerTest {
     TransactionServicePort transactionServicePort;
 
     @Test
-    void getAlltransactionsTest() throws Exception {
+    void getAllTransactionsTest() throws Exception {
         Mockito.when(transactionServicePort.getAllTransactions(123)).thenReturn(new ArrayList<>());
         mockMvc.perform(get("/transactions/123"))
                 .andExpect(status().isOk());

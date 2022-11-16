@@ -1,9 +1,7 @@
 package com.exalt.controller;
 
 import com.exalt.data.AccountDto;
-import com.exalt.ports.api.AccountDepositPort;
 import com.exalt.ports.api.AccountServicePort;
-import com.exalt.ports.api.AccountWithdrawalPort;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,21 +27,15 @@ class AccountControllerTest {
     MockMvc mockMvc;
 
     @MockBean
-    private AccountDepositPort accountDepositPort;
-
-    @MockBean
-    private AccountWithdrawalPort accountWithdrawalPort;
-
-    @MockBean
     private AccountServicePort accountServicePort;
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @Test
-    void depositeTest() throws Exception {
-        Mockito.when(accountDepositPort.deposite(100L,1L)).thenReturn(new AccountDto());
-        mockMvc.perform(post("/account/deposite").param("amount","100").param("accountNumber","1"))
+    void depositTest() throws Exception {
+        Mockito.when(accountServicePort.deposit(100L,1L)).thenReturn(new AccountDto());
+        mockMvc.perform(post("/account/deposit").param("amount","100").param("accountNumber","1"))
                 .andExpect(status().isOk());
     }
 
@@ -58,7 +50,7 @@ class AccountControllerTest {
 
     @Test
     void withdrawalTest() throws Exception {
-        Mockito.when(accountWithdrawalPort.withdrawal(100L,1L)).thenReturn(new AccountDto());
+        Mockito.when(accountServicePort.withdrawal(100L,1L)).thenReturn(new AccountDto());
         mockMvc.perform(post("/account/withdrawal").param("amount","100").param("accountNumber","1"))
                 .andExpect(status().isOk());
     }

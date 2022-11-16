@@ -26,6 +26,4 @@ public class TransactionDBAdapter implements TransactionPersistancePort {
         return TransactionMapper.INSTANCE.toTransactionDtoList(transactionRepository.findByAccountAccountNumber(accountNumber));
     }
 
-
-
 }

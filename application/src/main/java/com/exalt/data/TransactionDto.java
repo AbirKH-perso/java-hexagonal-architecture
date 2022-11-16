@@ -11,8 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class TransactionDto {
 
-  private long id;
-
   private double amount;
 
 

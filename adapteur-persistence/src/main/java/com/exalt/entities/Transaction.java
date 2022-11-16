@@ -8,16 +8,15 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false)
     private long id;
     @Column(name = "amount")
     private double amount;
 
-    @OneToOne
-    @JoinColumn(name = "accountNumber")
+    @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "ACCOUNT_ID",referencedColumnName = "id")
     private Account account;
 
-    @Column(name = "comment")
+    @Column(name = "info")
     private String transactionInfo;
 
     public Transaction() {
@@ -25,13 +24,6 @@ public class Transaction {
 
     }
 
-
-    public Transaction(String transactionInfo, double amount, Account account) {
-        super();
-        this.amount = amount;
-        this.account = account;
-        this.transactionInfo = transactionInfo;
-    }
 
 
     @Override
