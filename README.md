@@ -1,4 +1,4 @@
-# kata-bank-account
+# Hexagonal architecture
 
 ## Requirements
 
